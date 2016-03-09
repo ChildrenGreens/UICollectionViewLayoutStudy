@@ -73,9 +73,16 @@ class CustomLayout: UICollectionViewLayout {
      */
     override func collectionViewContentSize() -> CGSize {
         let contentWidth = collectionView?.bounds.size.width
+        // 取出最大的列高
+        var maxHeight = heights[0]
         
+        for i in 1 ..< columnCount{
+            if heights[i] > maxHeight{
+                maxHeight = heights[i]
+            }
+        }
         
-        return CGSize(width: contentWidth!, height: 1)
+        return CGSize(width: contentWidth!, height: maxHeight)
         
     }
     
